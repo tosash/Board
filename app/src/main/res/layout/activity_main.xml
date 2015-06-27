@@ -1,4 +1,21 @@
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:id="@+id/fragment"
-    android:name="com.kido.board.FragmentAds" tools:layout="@layout/fragment_ads"
-    android:layout_width="match_parent" android:layout_height="match_parent" />
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar_actionbar"
+        layout="@layout/toolbar_default"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <fragment
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:name="com.kido.board.ui.FragmentAds"
+        android:id="@+id/container"
+        tools:layout="@layout/fragment_ads" />
+</LinearLayout>
