@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:minHeight="@dimen/abc_action_bar_default_height_material"
-    android:background="#ffffffff">
+    android:background="#F37904">
 
 
 
@@ -36,7 +36,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:paddingRight="0dp"
-                android:background="#ffffffff"
+                android:background="#F37904"
                 android:cropToPadding="false" />
 
         </RelativeLayout>

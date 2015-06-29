@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             initDesign();
         } else {
-            mAccount.setText(savedInstanceState.getString("Account"));
+//            mAccount.setText(savedInstanceState.getString("Account"));
         }
     }
 

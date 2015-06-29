@@ -43,7 +43,7 @@ public class AdsActiveAdapter extends RecyclerView.Adapter<AdsActiveAdapter.AdsA
         adsActiveViewHolder.txtName.setText(ad.getAdName());
         adsActiveViewHolder.txtDesc.setText(ad.getAdDesc());
         adsActiveViewHolder.txtDate.setText(ad.getAdDate().toString());
-//        adsActiveViewHolder.imgThumbnail.setCircled(false);
+        adsActiveViewHolder.imgThumbnail.setCircled(false);
         adsActiveViewHolder.imgThumbnail.setImageUrl(ad.getAdUrl(), VolleySingleton.getInstance(null).getImageLoader());
     }
 

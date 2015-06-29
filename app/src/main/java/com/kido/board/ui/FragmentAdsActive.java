@@ -88,6 +88,7 @@ public class FragmentAdsActive extends Fragment implements SwipeRefreshLayout.On
         mSwipeRefreshLayout = (CustomSwype) rootView.findViewById(R.id.id_swype);
         mSwipeRefreshLayout.setOnRefreshListener(this);
         mSwipeRefreshLayout.setColorSchemeColors(Color.rgb(255, 155, 30));
+        mSwipeRefreshLayout.setProgressBackgroundColorSchemeColor(Color.LTGRAY);
 
         if (isTaskRunning) {
             mSwipeRefreshLayout.setRefreshing(true);
