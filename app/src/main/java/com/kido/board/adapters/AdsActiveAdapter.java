@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.kido.board.R;
@@ -18,6 +17,8 @@ import com.kido.board.ui.FragmentNewAd;
 import com.kido.board.util.CircularNetworkImageView;
 
 import java.util.List;
+
+import at.markushi.ui.CircleButton;
 
 public class AdsActiveAdapter extends RecyclerView.Adapter<AdsActiveAdapter.AdsActiveViewHolder> {
     public long currID;
@@ -42,7 +43,7 @@ public class AdsActiveAdapter extends RecyclerView.Adapter<AdsActiveAdapter.AdsA
         adsActiveViewHolder.txtName.setText(ad.getAdName());
         adsActiveViewHolder.txtDesc.setText(ad.getAdDesc());
         adsActiveViewHolder.txtDate.setText(ad.getAdDate().toString());
-        adsActiveViewHolder.imgThumbnail.setCircled(false);
+//        adsActiveViewHolder.imgThumbnail.setCircled(false);
         adsActiveViewHolder.imgThumbnail.setImageUrl(ad.getAdUrl(), VolleySingleton.getInstance(null).getImageLoader());
     }
 
@@ -71,9 +72,9 @@ public class AdsActiveAdapter extends RecyclerView.Adapter<AdsActiveAdapter.AdsA
         protected TextView txtDesc;
         protected TextView txtDate;
         protected TextView txtPrice;
-        protected ImageButton btnOff;
-        protected ImageButton btnEdit;
-        protected ImageButton btnDelete;
+        protected CircleButton btnOff;
+        protected CircleButton btnEdit;
+        protected CircleButton btnDelete;
 
         public AdsActiveViewHolder(final View itemView) {
             super(itemView);
@@ -82,9 +83,9 @@ public class AdsActiveAdapter extends RecyclerView.Adapter<AdsActiveAdapter.AdsA
             txtDesc = (TextView) itemView.findViewById(R.id.txt_desc);
             txtDate = (TextView) itemView.findViewById(R.id.txt_date);
             txtPrice = (TextView) itemView.findViewById(R.id.txtPrice);
-            btnOff = (ImageButton) itemView.findViewById(R.id.btnOff);
-            btnEdit = (ImageButton) itemView.findViewById(R.id.btnEdit);
-            btnDelete = (ImageButton) itemView.findViewById(R.id.btnDelete);
+            btnOff = (CircleButton) itemView.findViewById(R.id.btnOff);
+            btnEdit = (CircleButton) itemView.findViewById(R.id.btnEdit);
+            btnDelete = (CircleButton) itemView.findViewById(R.id.btnDelete);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

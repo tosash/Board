@@ -40,7 +40,7 @@ import java.util.List;
 
 
 public class FragmentAdsActive extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
-    private static String API_GET_ACTIVE_ADS = "/AdsActive";
+    private static String API_GET_ACTIVE_ADS = "/AdsActive.php";
     private static List<Ad> ads;
     private Activity mActivity;
     private Context fContext;
