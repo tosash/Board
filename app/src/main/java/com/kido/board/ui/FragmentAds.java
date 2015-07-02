@@ -1,15 +1,19 @@
 package com.kido.board.ui;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.kido.board.R;
-import com.kido.board.adapters.ViewPagerAdapter;
-import com.kido.board.util.SlidingTabLayout;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -17,12 +21,9 @@ import com.kido.board.util.SlidingTabLayout;
  */
 public class FragmentAds extends Fragment {
 
-    ViewPager pager;
-    ViewPagerAdapter adapter;
-    SlidingTabLayout tabs;
-    CharSequence Titles[] = {"Активные", "Не активные","Архив"};
-    int Numboftabs = 3;
-    View rootView;
+    private static ViewPager pager;
+    private static TabLayout tabLayout;
+    private static View rootView;
 
     public FragmentAds() {
     }
@@ -31,6 +32,8 @@ public class FragmentAds extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_ads, container, false);
+        pager = (ViewPager) rootView.findViewById(R.id.pager);
+        tabLayout = (TabLayout) rootView.findViewById(R.id.tabs);
         return rootView;
     }
 
@@ -38,25 +41,44 @@ public class FragmentAds extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Creating The ViewPagerAdapter and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
-        adapter = new ViewPagerAdapter(getFragmentManager(), Titles, Numboftabs);
-        // Assigning ViewPager View and setting the adapter
-        pager = (ViewPager) rootView.findViewById(R.id.pager);
+        Adapter adapter = new Adapter(getFragmentManager());
+        adapter.addFragment(new FragmentAdsActive(), "Активные");
+        adapter.addFragment(new FragmentAdsNoActive(), "Не активные");
+        adapter.addFragment(new FragmentAdsArhive(), "Архив");
+
+
         pager.setAdapter(adapter);
 
-        // Assiging the Sliding Tab Layout View
-        tabs = (SlidingTabLayout) rootView.findViewById(R.id.tabs);
-        tabs.setDistributeEvenly(true); // To make the Tabs Fixed set this true, This makes the tabs Space Evenly in Available width
+        tabLayout.setVisibility(View.VISIBLE);
+        tabLayout.setupWithViewPager(pager);
+    }
 
-        // Setting Custom Color for the Scroll bar indicator of the Tab View
-        tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
-            @Override
-            public int getIndicatorColor(int position) {
-                return getResources().getColor(R.color.tabsScrollColor);
-            }
-        });
+    static class Adapter extends FragmentStatePagerAdapter {
+        private final List<Fragment> mFragments = new ArrayList<>();
+        private final List<String> mFragmentTitles = new ArrayList<>();
 
-        // Setting the ViewPager For the SlidingTabsLayout
-        tabs.setViewPager(pager);
+        public Adapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            mFragments.add(fragment);
+            mFragmentTitles.add(title);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragments.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragments.size();
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitles.get(position);
+        }
     }
 }

@@ -39,8 +39,8 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class FragmentAdsActive extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
-    private static String API_GET_ACTIVE_ADS = "/AdsActive.php";
+public class FragmentAdsNoActive extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+    private static String API_GET_NO_ACTIVE_ADS = "/AdsNoActive.php";
     private static List<Ad> ads;
     private Activity mActivity;
     private Context fContext;
@@ -49,7 +49,7 @@ public class FragmentAdsActive extends Fragment implements SwipeRefreshLayout.On
     private CardView cardView;
     private RecyclerView.Adapter mAdapter;
     private CustomSwype mSwipeRefreshLayout;
-    private String TAG = FragmentAdsActive.class.toString();
+    private String TAG = FragmentAdsNoActive.class.toString();
     private boolean mMeasured = false;
     private boolean mPreMeasureRefreshing = false;
     private boolean isTaskRunning = false;
@@ -62,7 +62,7 @@ public class FragmentAdsActive extends Fragment implements SwipeRefreshLayout.On
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_ads_active, container, false);
+        rootView = inflater.inflate(R.layout.fragment_ads_noactive, container, false);
         return rootView;
     }
 
@@ -97,7 +97,7 @@ public class FragmentAdsActive extends Fragment implements SwipeRefreshLayout.On
             getAdFromServer();
         } else {
             Gson gson = new Gson();
-            String s = savedInstanceState.getString("ads");
+            String s = savedInstanceState.getString("adsNoActive");
             Ad[] obj = gson.fromJson(s, Ad[].class);
             if (obj == null) {
                 ads = new ArrayList<Ad>();
@@ -116,7 +116,7 @@ public class FragmentAdsActive extends Fragment implements SwipeRefreshLayout.On
             Log.d(TAG, "Query: getAdFromServer: " + Long.toString(System.currentTimeMillis()));
             VolleySingleton.getInstance(fContext).addToRequestQueue(
                     new GsonRequest<ServerAds>(Request.Method.GET,
-                            API_GET_ACTIVE_ADS,
+                            API_GET_NO_ACTIVE_ADS,
                             ServerAds.class,
                             null,
                             new Response.Listener<ServerAds>() {
@@ -173,7 +173,7 @@ public class FragmentAdsActive extends Fragment implements SwipeRefreshLayout.On
         super.onSaveInstanceState(outState);
         Gson gson = new Gson();
         String s = gson.toJson(ads);
-        outState.putString("ads", s);
+        outState.putString("adsNoActive", s);
     }
 
 
@@ -181,7 +181,7 @@ public class FragmentAdsActive extends Fragment implements SwipeRefreshLayout.On
     public void onViewStateRestored(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
             Gson gson = new Gson();
-            String s = savedInstanceState.getString("ads");
+            String s = savedInstanceState.getString("adsNoActive");
             Ad[] obj = gson.fromJson(s, Ad[].class);
             if (obj == null) {
                 ads = new ArrayList<Ad>();

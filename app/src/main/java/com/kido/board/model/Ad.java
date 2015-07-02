@@ -34,13 +34,14 @@ public class Ad {
 
     @SerializedName("priceAd")
     @Expose(serialize = true, deserialize = true)
-    private double adPrice;
+    private float adPrice;
 
-    public double getAdPrice() {
+
+    public float getAdPrice() {
         return adPrice;
     }
 
-    public void setAdPrice(double adPrice) {
+    public void setAdPrice(float adPrice) {
         this.adPrice = adPrice;
     }
 

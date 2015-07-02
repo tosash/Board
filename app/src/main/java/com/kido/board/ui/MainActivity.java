@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kido.board.R;
 
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     private TextView mAccount;
     private ImageButton mAddNew;
+    private long lastBackPressTime = 0;
+    private Toast toast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +61,36 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+
+//        if (mNavigationDrawerFragment.isDrawerOpen())
+//            mNavigationDrawerFragment.closeDrawer();
+//        else {
+        if (getFragmentManager().getBackStackEntryCount() == 0) {
+            if (this.lastBackPressTime < System.currentTimeMillis() - 4000) {
+                toast = Toast.makeText(this, "Press back again to close this app", 4000);
+                toast.show();
+                this.lastBackPressTime = System.currentTimeMillis();
+            } else {
+                if (toast != null) {
+                    toast.cancel();
+                }
+                super.onBackPressed();
+            }
+        } else {
+            getFragmentManager().popBackStack();
+        }
+    }
+
+    public void clearBackStack() {
+        FragmentManager manager = getFragmentManager();
+        if (manager.getBackStackEntryCount() > 0) {
+            FragmentManager.BackStackEntry first = manager.getBackStackEntryAt(0);
+            manager.popBackStack(first.getId(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        }
     }
 
     @Override

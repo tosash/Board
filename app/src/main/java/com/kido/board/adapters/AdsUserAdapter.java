@@ -3,6 +3,7 @@ package com.kido.board.adapters;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,12 +21,12 @@ import java.util.List;
 
 import at.markushi.ui.CircleButton;
 
-public class AdsActiveAdapter extends RecyclerView.Adapter<AdsActiveAdapter.AdsActiveViewHolder> {
+public class AdsUserAdapter extends RecyclerView.Adapter<AdsUserAdapter.AdsActiveViewHolder> {
     public long currID;
     private List<Ad> mItems;
     private FragmentManager fm;
 
-    public AdsActiveAdapter(FragmentManager f, List<Ad> ads) {
+    public AdsUserAdapter(FragmentManager f, List<Ad> ads) {
         fm = f;
         mItems = ads;
     }
@@ -43,6 +44,7 @@ public class AdsActiveAdapter extends RecyclerView.Adapter<AdsActiveAdapter.AdsA
         adsActiveViewHolder.txtName.setText(ad.getAdName());
         adsActiveViewHolder.txtDesc.setText(ad.getAdDesc());
         adsActiveViewHolder.txtDate.setText(ad.getAdDate().toString());
+        adsActiveViewHolder.txtPrice.setText(String.format("%.2f", ad.getAdPrice()) + "₴");
         adsActiveViewHolder.imgThumbnail.setCircled(false);
         adsActiveViewHolder.imgThumbnail.setImageUrl(ad.getAdUrl(), VolleySingleton.getInstance(null).getImageLoader());
     }
@@ -75,6 +77,7 @@ public class AdsActiveAdapter extends RecyclerView.Adapter<AdsActiveAdapter.AdsA
         protected CircleButton btnOff;
         protected CircleButton btnEdit;
         protected CircleButton btnDelete;
+        protected TabLayout tabL;
 
         public AdsActiveViewHolder(final View itemView) {
             super(itemView);
@@ -93,15 +96,14 @@ public class AdsActiveAdapter extends RecyclerView.Adapter<AdsActiveAdapter.AdsA
 
                         Bundle bundle = new Bundle();
                         int pos = getLayoutPosition();
-                        bundle.putLong("AdId", getItem(pos).getAdNumer());
-                        Fragment fragAd = new FragmentNewAd();
-                        fragAd.setArguments(bundle);
+//                        bundle.putLong("AdId", getItem(pos).getAdNumer());
+                        Fragment fragAd = new FragmentNewAd().newInstance(getItem(pos).getAdNumer());
+//                        fragAd.setArguments(bundle);
                         fm.beginTransaction()
 //                                .add(R.id.container, fragAd)
                                 .replace(R.id.container, fragAd)
                                 .addToBackStack(FragmentNewAd.class.toString())
                                 .commit();
-                        ;
                     } catch (Exception e) {
                         Log.e("Ad edit", e.toString());
                     }

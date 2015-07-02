@@ -2,20 +2,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="#FFC2EA74"
     android:orientation="vertical"
     tools:context=".MainActivityFragment">
 
-    <com.kido.board.util.SlidingTabLayout
+    <android.support.design.widget.TabLayout
         android:id="@+id/tabs"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:elevation="2dp"
-        android:background="#25301e21"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"></android.support.v4.view.ViewPager>
+        android:layout_weight="1"
+        android:background="@drawable/ads_viewpager_background"></android.support.v4.view.ViewPager>
 
 </LinearLayout>

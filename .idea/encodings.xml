@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/kido/board/adapters/AdsActiveAdapter.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/kido/board/adapters/AdsUserAdapter.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/kido/board/model/Ad.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/kido/board/model/AdDetail.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/kido/board/model/ImageOfAd.java" charset="UTF-8" />
@@ -10,12 +10,18 @@
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/kido/board/network/GsonRequest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/kido/board/network/VolleySingleton.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/kido/board/ui/FragmentAdsActive.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/kido/board/ui/FragmentAdsArhive.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/kido/board/ui/FragmentAdsNoActive.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/kido/board/util/BitmapLruCache.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/kido/board/util/CircularNetworkImageView.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/kido/board/util/CustomSwype.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/kido/board/util/OkHttpStack.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/ads_active_row.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/ads_arhive_row.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/ads_noactive_row.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_ads_active.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_ads_arhive.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_ads_noactive.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/toolbar_default.xml" charset="UTF-8" />
   </component>
 </project>
